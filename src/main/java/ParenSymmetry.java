@@ -1,8 +1,12 @@
+import java.util.Scanner;
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+
 
 public class ParenSymmetry {
 
 
-    private Boolean isBalanced(String s) {
+    private  Boolean isBalanced(String s) {
         // implement this method
         int counter1 = 0;
         int counter2 = 0;
@@ -19,26 +23,32 @@ public class ParenSymmetry {
                 }
             }
         }
-        if (counter1 == counter2) {
-            return true;
-        } else {
-            return false;
-        }
+        return counter1 == counter2;
 
     }
-    private void checkFile(String filename) {
+    private void checkFile(String filename) throws FileNotFoundException {
         // open file named filename
-
+        File myObj = new File(filename);
         // for each line in the file
-            // read the line
+        Scanner scanner = new Scanner(myObj);
+        // read the line
+        while (scanner.hasNextLine()) {
+            String data = scanner.nextLine();
             // print whether or not the line's parenthesis are balanced
 
+           isBalanced(data);
+           scanner.close();
+
+        }
+
+
         // CLOSE the file
+
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         ParenSymmetry ps = new ParenSymmetry();
-
+        ps.checkFile("TestStrings0.txt");
         Boolean b0 = ps.isBalanced("()");
         printResult(b0, true);
 
