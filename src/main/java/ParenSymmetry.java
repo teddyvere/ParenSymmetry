@@ -4,9 +4,28 @@ public class ParenSymmetry {
 
     private Boolean isBalanced(String s) {
         // implement this method
-        return null;
-    }
+        int counter1 = 0;
+        int counter2 = 0;
 
+
+        for (int i = 0; i <= s.length(); i++) {
+            if (s.charAt(i) == ('(')) {
+                counter1 += 1;
+            } else {
+                if (s.charAt(i) == (')')) {
+                    counter2 += 1;
+                } else {
+                    return null;
+                }
+            }
+        }
+        if (counter1 == counter2) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
     private void checkFile(String filename) {
         // open file named filename
 
